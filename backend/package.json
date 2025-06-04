@@ -1,0 +1,26 @@
+{
+  "name": "afyalib",
+  "version": "1.0.0",
+  "description": "biblioteca da afya",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heitorallmeida/AfyaLib.git"
+  },
+  "keywords": [
+    "biblioteca",
+    "afya"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Heitorallmeida/AfyaLib/issues"
+  },
+  "homepage": "https://github.com/Heitorallmeida/AfyaLib#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

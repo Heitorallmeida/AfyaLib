@@ -1,11 +1,9 @@
 const express = require("express");
-const app = express();
-const pool = require("./db");
-
-app.use(express.json());
+const router = express.Router();
+const pool = require("../db"); // Certifique-se de que o caminho está correto
 
 // 📌 GET: Buscar todos os livros
-app.get("/livros", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM livro");
         res.json(result.rows);
@@ -16,7 +14,7 @@ app.get("/livros", async (req, res) => {
 });
 
 // 📌 POST: Adicionar um novo livro
-app.post("/livros", async (req, res) => {
+router.post("/", async (req, res) => {
     const { titulo, autor, genero, ano_publicacao, status, id_adm } = req.body;
 
     try {
@@ -32,7 +30,7 @@ app.post("/livros", async (req, res) => {
 });
 
 // 📌 PUT: Atualizar um livro existente
-app.put("/livros/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     const { id } = req.params;
     const { titulo, autor, genero, ano_publicacao, status, id_adm } = req.body;
 
@@ -54,7 +52,7 @@ app.put("/livros/:id", async (req, res) => {
 });
 
 // 📌 DELETE: Remover um livro pelo ID
-app.delete("/livros/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -71,8 +69,5 @@ app.delete("/livros/:id", async (req, res) => {
     }
 });
 
-// 📌 Configuração do servidor
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+// 📌 Exportação correta do router
+module.exports = router;

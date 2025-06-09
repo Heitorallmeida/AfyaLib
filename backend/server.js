@@ -1,26 +1,24 @@
-const express = require('express');
-const pool = require('./db');
+const express = require("express");
+const pool = require("./db"); // Agora db.js apenas gerencia a conexão
+
+const livrosRouter = require("./routes/livros");
+const alunosRouter = require("./routes/alunos");
+const alugueisRouter = require("./routes/alugueis");
 
 const app = express();
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('API Biblioteca Rodando! 🚀');
+// 📌 Rota inicial
+app.get("/", (req, res) => {
+    res.send("API Biblioteca Rodando! 🚀");
 });
 
-const PORT = 3000;
+// 📌 Configuração das rotas
+app.use("/livros", livrosRouter);
+app.use("/alunos", alunosRouter);
+app.use("/alugueis", alugueisRouter);
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
-
-
-
-app.get('/livros', async (req, res) => {
-  try {
-    const resultado = await pool.query('SELECT * FROM livro');
-    res.json(resultado.rows);
-  } catch (error) {
-    console.error('Erro ao buscar livros:', error);
-    res.status(500).json({ error: 'Erro interno do servidor' });
-  }
+    console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });

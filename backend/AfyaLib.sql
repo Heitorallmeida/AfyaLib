@@ -2,6 +2,12 @@
 CREATE DATABASE biblioteca_db;
 \c biblioteca_db;
 
+-- 📌 Criando o usuário do banco
+CREATE USER afyalib_user WITH PASSWORD 'senhaSegura';
+
+-- 📌 Concedendo acesso ao banco
+GRANT CONNECT ON DATABASE biblioteca_db TO afyalib_user;
+
 -- 📌 Tabela de Administradores
 CREATE TABLE administrador (
     id_adm SERIAL PRIMARY KEY,
@@ -42,7 +48,7 @@ CREATE TABLE aluguel (
     status VARCHAR(15) CHECK (status IN ('Alugado', 'Devolvido')) DEFAULT 'Alugado'
 );
 
--- 📌 Conceder permissões ao usuário
+-- 📌 Concedendo permissões ao usuário
 GRANT USAGE, SELECT, UPDATE ON SEQUENCE aluno_id_aluno_seq TO afyalib_user;
 GRANT USAGE, SELECT, UPDATE ON SEQUENCE livro_id_livro_seq TO afyalib_user;
 GRANT USAGE, SELECT, UPDATE ON SEQUENCE aluguel_id_aluguel_seq TO afyalib_user;
@@ -76,3 +82,7 @@ VALUES
 ('Banco de Dados - SQL', 'Renato Dias', 'Didatico', 2022, 'Disponivel', 1),
 ('Desenvolvimento Web', 'Carla Mota', 'Didatico', 2023, 'Disponivel', 1),
 ('O Senhor dos Anéis', 'J.R.R. Tolkien', 'Fantasia', 1954, 'Disponivel', 1);
+
+
+--psql -U postgres -f biblioteca_db.sql
+--usar para criar o banco de dados e as tabelas por codigo.

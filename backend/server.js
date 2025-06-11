@@ -5,12 +5,14 @@ const livrosRouter = require("./routes/livros");
 const alunosRouter = require("./routes/alunos");
 const alugueisRouter = require("./routes/alugueis");
 
+const cors = require("cors");
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // 📌 Rota inicial
 app.get("/", (req, res) => {
-    res.send("API Biblioteca Rodando! 🚀");
+  res.send("API Biblioteca Rodando! 🚀");
 });
 
 // 📌 Configuração das rotas
@@ -20,5 +22,5 @@ app.use("/alugueis", alugueisRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });

@@ -1,6 +1,6 @@
 # AfyaLib
 
- Este projeto é um sistema para gerenciamento de uma biblioteca escolar, onde alunos podem alugar e devolver livros, e um administrador gerencia o catálogo e os usuários. O sistema controla o status dos livros (disponível ou alugado), o histórico de empréstimos, e mantém o cadastro dos alunos.
+Este projeto é um sistema para gerenciamento de uma biblioteca escolar, onde alunos podem alugar e devolver livros, e um administrador gerencia o catálogo e os usuários. O sistema controla o status dos livros (disponível ou alugado), o histórico de empréstimos, e mantém o cadastro dos alunos.
 
 ---
 
@@ -37,7 +37,7 @@ O banco de dados foi modelado para atender as necessidades do sistema, com as se
 
 ### 2. Entre na pasta do backend com o terminal e rode o comando npm install
 
-### 3. Rode o comando node app.js
+### 3. Rode o comando node server.js
 
 #### Exemplo de rota
 

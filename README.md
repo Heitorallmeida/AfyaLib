@@ -52,3 +52,11 @@ app.post("/register", (req, res) => {
 ### a função que será executada quando o usuário acessar essa rota com esse método
 
 ### o res.json é uma forma de retornar um json
+
+
+### como iniciar o server :
+* na pasta raiz do back-end.
+```
+node server.js
+```
+para iniciar o server no cmd ou no power shell.
